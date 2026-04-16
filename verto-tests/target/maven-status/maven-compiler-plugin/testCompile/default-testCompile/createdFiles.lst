@@ -1,0 +1,9 @@
+tests\api\CheckoutApiTests.class
+base\BaseApiTest.class
+config\Config.class
+tests\api\ProductApiTests.class
+tests\ui\CartAndCheckoutUiTests.class
+base\BaseUiTest.class
+tests\ui\HomeUiSmokeTests.class
+listeners\AllureListener.class
+utils\AllureAttach.class

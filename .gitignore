@@ -1,0 +1,21 @@
+# === Node / React ===
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.DS_Store
+
+# === Java / Spring Boot ===
+backend/target/
+backend/.idea/
+backend/.vscode/
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# === Logs ===
+*.log
+backend/logs/
+
+# === OS Files ===
+.DS_Store
+Thumbs.db

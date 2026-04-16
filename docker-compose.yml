@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # The Redis Cache Service
+  redis-db:
+    image: redis:7-alpine
+    container_name: verto-redis
+    ports:
+      - "6379:6379" # Expose Redis to your host machine
+    volumes:
+      - redis_data:/data
+
+  # The Verto Shop Application
+  verto-shop-app:
+    container_name: verto-shop-app
+    # Build the image from the Dockerfile in the backend directory
+    build:
+      context: ./backend/verto-shop
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Expose the Spring Boot app
+    depends_on:
+      - redis-db # Wait for Redis to start before starting the app
+    environment:
+      # Tell Spring to use the 'redis-db' service name for Redis
+      - SPRING_DATA_REDIS_HOST=redis-db
+      - SPRING_DATA_REDIS_PORT=6379
+      # This tells Spring to wait for the DB to be available
+      - SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION=true
+      # We map the H2 database file to a volume to persist it
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:/app/data/verto-db
+    volumes:
+      - h2_data:/app/data
+
+volumes:
+  redis_data:
+  h2_data:

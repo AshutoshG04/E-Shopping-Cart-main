@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Verto Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="listeners.AllureListener"/>
+  </listeners>
+  <test thread-count="5" name="API Smoke(failed)" verbose="0">
+    <classes>
+      <class name="tests.api.ProductApiTests">
+        <methods>
+          <include name="getProducts_shouldReturnList"/>
+          <include name="apiSetup"/>
+        </methods>
+      </class> <!-- tests.api.ProductApiTests -->
+      <class name="tests.api.CheckoutApiTests">
+        <methods>
+          <include name="checkout_validPayload_shouldCreateOrder"/>
+          <include name="apiSetup"/>
+          <include name="checkout_invalidProduct_shouldReturn422"/>
+        </methods>
+      </class> <!-- tests.api.CheckoutApiTests -->
+    </classes>
+  </test> <!-- API Smoke(failed) -->
+  <test thread-count="5" name="UI Smoke (Guest)(failed)" verbose="0">
+    <classes>
+      <class name="tests.ui.CartAndCheckoutUiTests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="cartToGuestCheckout_SuccessMessage"/>
+        </methods>
+      </class> <!-- tests.ui.CartAndCheckoutUiTests -->
+      <class name="tests.ui.HomeUiSmokeTests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="userCanAddItemToCart"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- tests.ui.HomeUiSmokeTests -->
+    </classes>
+  </test> <!-- UI Smoke (Guest)(failed) -->
+</suite> <!-- Failed suite [Verto Suite] -->

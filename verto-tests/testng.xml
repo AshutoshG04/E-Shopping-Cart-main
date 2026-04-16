@@ -1,0 +1,21 @@
+<!-- Path: testng.xml -->
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Verto Suite" verbose="1" parallel="false">
+    <listeners>
+        <listener class-name="listeners.AllureListener"/>
+    </listeners>
+
+    <test name="API Smoke">
+        <classes>
+            <class name="tests.api.ProductApiTests"/>
+            <class name="tests.api.CheckoutApiTests"/>
+        </classes>
+    </test>
+
+    <test name="UI Smoke (Guest)">
+        <classes>
+            <class name="tests.ui.HomeUiSmokeTests"/>
+            <class name="tests.ui.CartAndCheckoutUiTests"/>
+        </classes>
+    </test>
+</suite>
